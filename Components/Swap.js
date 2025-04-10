@@ -1,7 +1,7 @@
-// components/Swap.js
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import styles from "../styles/Swap.module.css";
+import { SwapTokenContext } from "../context/SwapContext";
 
 const Swap = () => {
   const [inputAmount, setInputAmount] = useState("");
@@ -9,15 +9,15 @@ const Swap = () => {
   const [conversionRates, setConversionRates] = useState({});
   const [selectedCurrency, setSelectedCurrency] = useState("usd");
 
-  // Fetch live ETH conversion rates from CoinGecko for multiple currencies
+  const { singleSwapToken, connectWallet, account, dai, ether } = useContext(SwapTokenContext);
+
+  // Fetch live ETH conversion rates from CoinGecko
   useEffect(() => {
     const fetchConversionRates = async () => {
       try {
         const response = await axios.get(
           "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd,eur,gbp"
         );
-        // The response data is expected in the format:
-        // { ethereum: { usd: <price>, eur: <price>, gbp: <price> } }
         setConversionRates(response.data.ethereum);
       } catch (error) {
         console.error("Error fetching conversion rates:", error);
@@ -27,11 +27,12 @@ const Swap = () => {
     fetchConversionRates();
   }, []);
 
-  // Auto-calculate the output amount whenever inputAmount or selectedCurrency changes
+  // Auto-calculate output amount
   useEffect(() => {
     if (conversionRates[selectedCurrency] && inputAmount) {
-      const result = parseFloat(inputAmount) * conversionRates[selectedCurrency];
-      setOutputAmount(result.toFixed(2)); // Round to 2 decimal places
+      const result =
+        parseFloat(inputAmount) * conversionRates[selectedCurrency];
+      setOutputAmount(result.toFixed(2));
     } else {
       setOutputAmount("");
     }
@@ -71,11 +72,33 @@ const Swap = () => {
           />
         </div>
       </div>
+
       <p className={styles.footer}>
         {conversionRates[selectedCurrency]
           ? `Current ETH Price: ${conversionRates[selectedCurrency]} ${selectedCurrency.toUpperCase()}`
           : "Fetching conversion rates..."}
       </p>
+
+      <p>{dai}</p>
+      <p>{ether}</p>
+
+      {account ?(
+        <button
+          onClick={()=> singleSwapToken()}
+          className={styles.swapButton}
+        >
+          Swap Now
+        </button>
+      ):(
+        <button
+        className={styles.swapButton}
+        onClick={() =>  connectWallet()}
+      >
+        Connect Wallet
+      </button>
+      )}
+
+  
     </div>
   );
 };
