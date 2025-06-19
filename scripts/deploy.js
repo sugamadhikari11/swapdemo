@@ -14,17 +14,23 @@ async function main() {
     //  await lifeToken.deployed();
     //  console.log(`Life deployed to ${lifeToken.address}`);
 
-    //SingleSwapTOKEN
+    // //SINGLE SWAP
     const SingleSwapToken = await hre.ethers.getContractFactory("SingleSwapToken");
     const singleSwapToken = await SingleSwapToken.deploy();
     await singleSwapToken.deployed();
     console.log(`SingleSwapToken deployed to ${singleSwapToken.address}`);
 
     // //SwapMultipleHop
-    // const SwapMultiHop = await hre.ethers.getContractFactory("SwapMultiHop");
-    // const swapMultiHop = await SwapMultiHop.deploy();
-    // await swapMultiHop.deployed();
-    // console.log(`SwapMultiHop deployed to ${swapMultiHop.address}`);
+    const SwapMultiHop = await hre.ethers.getContractFactory("SwapMultiHop");
+    const swapMultiHop = await SwapMultiHop.deploy();
+    await swapMultiHop.deployed();
+    console.log(`SwapMultiHop deployed to ${swapMultiHop.address}`);
+
+    //USER DATA CONTRACT
+    const UserStorageData = await hre.ethers.getContractFactory("UserStorageData");
+    const userStorageData = await UserStorageData.deploy();
+    await userStorageData.deployed();
+    console.log(`UserStorageData deployed to ${userStorageData.address}`);
 
 }
 

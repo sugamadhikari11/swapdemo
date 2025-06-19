@@ -5,11 +5,9 @@ pragma solidity >=0.7.0 < 0.9.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract RSSToken is ERC20, Ownable{
+contract RSS is ERC20, Ownable{
 
-    constructor() ERC20("RSSToken", "RSS"){}
-
-    function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount);     
+    constructor() ERC20('RSS', 'RSS'){
+        _mint(msg.sender, 600000 * 10 ** decimals());
     }
 }

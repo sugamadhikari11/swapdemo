@@ -11,7 +11,9 @@ import {
     SwapMultiHopAddress,
     SwapMultiHopABI,
     IWETHAddress,
-    IWETHABI
+    IWETHABI,
+    userStorageDataAddress,
+    userStorageDataABI,
 }from '../context/constants';
 
 
@@ -100,6 +102,23 @@ export const connectingWithSingleSwapToken = async ()=>{
     }
 }
 
+//Multi swap TOKEN Fecthing
+export const fetchMultiSwapContract = (signerOrProvider) => new ethers.Contract(
+    SwapMultiHopAddress, SwapMultiHopABI, signerOrProvider);
+
+//Connecting with Multi Swap Token contract
+export const connectingWithMultiSwapToken = async ()=>{
+    try{
+        const web3modal = new Web3Modal();
+        const connection = await web3modal.connect();
+        const provider = new ethers.providers.Web3Provider(connection);
+        const signer = provider.getSigner();
+        const contract = fetchMultiSwapContract(signer)
+        return contract;
+    }catch(error){
+        console.log(error)
+    }
+}
 
 //IWTH TOKEN FECTHING
 export const fetchIWTHContract =  (signerOrProvider) => new ethers.Contract(
@@ -138,3 +157,20 @@ export const connectingWithDAIToken = async ()=>{
     }
 }
 
+//USER CONTRACT CONNECTION
+export const fetchUserStorageContract =  (signerOrProvider) => new ethers.Contract(
+    userStorageDataAddress, userStorageDataABI, signerOrProvider);
+
+//Connecting with DAI contract
+export const connectingWithUserStorgaeContract = async ()=>{
+    try{
+        const web3modal = new Web3Modal();
+        const connection = await web3modal.connect();
+        const provider = new ethers.providers.Web3Provider(connection);
+        const signer = provider.getSigner();
+        const contract = fetchUserStorageContract(signer)
+        return contract;
+    }catch(error){
+        console.log(error)
+    }
+}
