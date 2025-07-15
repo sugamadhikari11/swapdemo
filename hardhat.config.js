@@ -1,5 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
-// require("@nomiclabs/hardhat-waffle");
+require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -22,6 +22,16 @@ module.exports = {
       forking: {
         url: "https://eth-mainnet.g.alchemy.com/v2/ial3Mz1oNh1R3IopVJAI4lWHi5NwoQ4N",
       },
+    },
+    sepolia: {
+      url: process.env.SEPOLIA_RPC_URL,
+      accounts: [process.env.PRIVATE_KEY],
+      chainId: 11155111,
+    },
+  },
+  etherscan: {
+    apiKey: {
+      sepolia: process.env.ETHERSCAN_API_KEY,
     },
   },
 };

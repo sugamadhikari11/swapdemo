@@ -6,8 +6,8 @@ import { MIXED_ROUTE_QUOTER_V1_ADDRESSES } from "@uniswap/smart-order-router";
 const bn = require("bignumber.js");
 bn.config({EXPONENTIAL_AT: 999999, DECIMAL_PLACES:40});
 
-const UNISWAP_V3_FACTORY_ADDRESS = '0xa85233C63b9Ee964Add6F2cffe00Fd84eb32338f';
-const NON_FUNABLE_MANAGER = '0xc5a5C42992dECbae36851359345FE25997F5C42d';
+const UNISWAP_V3_FACTORY_ADDRESS = '0x14f60A4A81C4aA7579f30d1DA869F7D8Fe22233f';
+const NON_FUNABLE_MANAGER = '0x8F56ff6F0DD663C5E59CB27c1d930Fdc14140846';
 const artifacts = {
     UniswapV3Factory: require("@uniswap/v3-core/artifacts/contracts/UniswapV3Factory.sol/UniswapV3Factory.json"),
     NonfungiblePositionManager: require("@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json"),

@@ -14,6 +14,8 @@ async function  main() {
     console.log("srsAddress=", `'${srs.address}'`);
     console.log("rssAddress=", `'${rss.address}'`);
     console.log("ssrAddress=", `'${ssr.address}'`);
+    console.log("Owner (deployer) address:", owner.address);
+
 }
 
 // npx hardhat run --network localhost  scripts/deployToken.js

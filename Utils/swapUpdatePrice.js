@@ -3,13 +3,13 @@ import { ethers, BigNumber } from "ethers";
 import {Token, CurrencyAmount, TradeType, Percent} from "@uniswap/sdk-core";
 
 // GET DATA RIGHT
-const V3_SWAP_ROUTER_ADDRESS = "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45"
+const V3_SWAP_ROUTER_ADDRESS = "0xf6e855D17ee9A9faf0Cd66D90Db0c09f2603B7a3"
 
 // GETP PRICE
 const chainId = 1;
 
 const provider = new ethers.providers.JsonRpcProvider(
-    "https://eth-mainnet.g.alchemy.com/v2/ial3Mz1oNh1R3IopVJAI4lWHi5NwoQ4N"
+    "https://eth-sepolia.g.alchemy.com/v2/-TZNzPEOe3aN-Zwf0EDfG-v2WYocB4CB"
 );
 
 const router = new AlphaRouter({chainId:chainId, provider:provider});

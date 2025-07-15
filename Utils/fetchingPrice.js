@@ -10,11 +10,14 @@ const{
 
 const {getAbi, getPoolImmutables} = require("./priceHelpers");
 
-const MAINNET_URL = "https://eth-mainnet.g.alchemy.com/v2/ial3Mz1oNh1R3IopVJAI4lWHi5NwoQ4N"
 
-const provider = new ethers.providers.JsonRpcProvider(MAINNET_URL);
+const SEPOLIA_URL = "https://eth-sepolia.g.alchemy.com/v2/-TZNzPEOe3aN-Zwf0EDfG-v2WYocB4CB";
 
-const qutorAddress = "0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6";
+const provider = new ethers.providers.JsonRpcProvider(SEPOLIA_URL);
+
+// Uniswap V3 Quoter address on Sepolia
+const qutorAddress = "0x61fFE014bA17989E743c5F6cB21bF9697530B21e";
+
 
 export const getPrice = async(inputAmount, poolAddress)=>{
     const poolContract = new ethers.Contract(

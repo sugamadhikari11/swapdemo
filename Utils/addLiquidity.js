@@ -4,7 +4,7 @@ import {Token} from "@uniswap/sdk-core";
 import {NonfungiblePositionManager, Pool, Position, nearestUsableTick} from "@uniswap/v3-sdk";
 
 // Uniswap contract Addresses
-const positionManagerAddress='0xc5a5C42992dECbae36851359345FE25997F5C42d'
+const positionManagerAddress='0x8F56ff6F0DD663C5E59CB27c1d930Fdc14140846'
 
 const artifacts = {
     NonfungiblePositionManager: require("@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json"),

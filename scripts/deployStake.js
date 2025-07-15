@@ -13,7 +13,7 @@ async function main() {
 
   // ✅ Add EIP-1559 gas settings here
   const sepoliaStaking = await SepoliaStaking.deploy({
-    maxFeePerGas: ethers.utils.parseUnits("2", "gwei"),           // 2 gwei
+    maxFeePerGas: ethers.utils.parseUnits("3", "gwei"),           // 2 gwei
     maxPriorityFeePerGas: ethers.utils.parseUnits("1.5", "gwei"), // 1.5 gwei tip
   });
 
